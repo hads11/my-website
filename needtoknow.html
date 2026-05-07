@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Need To Know – BTS Forever by Hadley Hillstead</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&family=Pacifico&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black:         #0a0a0f;
+      --deep-purple:   #1a0030;
+      --royal-purple:  #5b2d8e;
+      --vivid-purple:  #7c3dbf;
+      --light-purple:  #b084e8;
+      --accent-pink:   #ff6eb4;
+      --accent-gold:   #ffd700;
+      --accent-cyan:   #00e5ff;
+      --white:         #f5f0ff;
+      --text-light:    #e8d8ff;
+      --row-a:         rgba(26,0,48,0.55);
+      --row-b:         rgba(10,0,20,0.78);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--black); color: var(--white); font-family: 'Nunito', sans-serif; overflow-x: hidden; }
+
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        radial-gradient(1px 1px at  8% 12%, rgba(255,255,255,.75) 0%, transparent 100%),
+        radial-gradient(1px 1px at 22% 58%, rgba(255,255,255,.50) 0%, transparent 100%),
+        radial-gradient(1px 1px at 43% 28%, rgba(255,255,255,.65) 0%, transparent 100%),
+        radial-gradient(1px 1px at 61% 77%, rgba(255,255,255,.55) 0%, transparent 100%),
+        radial-gradient(1px 1px at 74% 18%, rgba(255,255,255,.80) 0%, transparent 100%),
+        radial-gradient(1px 1px at 88% 52%, rgba(255,255,255,.45) 0%, transparent 100%),
+        radial-gradient(2px 2px at 16% 42%, rgba(176,132,232,.55) 0%, transparent 100%),
+        radial-gradient(2px 2px at 68% 63%, rgba(176,132,232,.45) 0%, transparent 100%);
+    }
+
+    /* NAV */
+    nav { position:sticky; top:0; z-index:1000; background:rgba(10,0,25,.93); backdrop-filter:blur(14px); border-bottom:2px solid var(--vivid-purple); height:68px; padding:0 2.5rem; display:flex; align-items:center; justify-content:space-between; box-shadow:0 4px 30px rgba(91,45,142,.5); }
+    .nav-logo { font-family:'Pacifico',cursive; font-size:1.45rem; color:var(--accent-gold); text-decoration:none; text-shadow:0 0 16px rgba(255,215,0,.5); white-space:nowrap; flex-shrink:0; }
+    .nav-links { display:flex; list-style:none; gap:.2rem; }
+    .nav-links a { text-decoration:none; color:var(--text-light); font-weight:800; font-size:.85rem; padding:.45rem .95rem; border-radius:25px; letter-spacing:.04em; text-transform:uppercase; transition:all .3s ease; }
+    .nav-links a:hover { color:var(--black); background:var(--light-purple); box-shadow:0 0 14px rgba(176,132,232,.55); }
+    .nav-links a.active { background:var(--accent-gold); color:var(--black); box-shadow:0 0 14px rgba(255,215,0,.45); }
+
+    /* TICKER */
+    .ticker-wrap { position:relative; z-index:1; overflow:hidden; background:linear-gradient(90deg,var(--accent-pink),var(--vivid-purple),var(--accent-cyan),var(--accent-gold),var(--accent-pink)); background-size:300% 100%; animation:grad-shift 7s ease infinite; padding:.55rem 0; white-space:nowrap; }
+    @keyframes grad-shift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    .ticker-inner { display:inline-block; animation:ticker 28s linear infinite; font-family:'Bebas Neue',sans-serif; font-size:.95rem; letter-spacing:.22em; color:var(--black); }
+    @keyframes ticker { from{transform:translateX(100vw)} to{transform:translateX(-100%)} }
+
+    /* BANNER */
+    .banner { position:relative; z-index:1; width:100%; height:280px; background:linear-gradient(135deg,#10001f 0%,#2d0a5a 40%,#5b2d8e 70%,#1a0030 100%); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .banner::before { content:''; position:absolute; width:480px; height:480px; background:radial-gradient(circle,rgba(255,110,180,.2) 0%,transparent 70%); top:-150px; right:-50px; border-radius:50%; pointer-events:none; }
+    .banner::after  { content:''; position:absolute; width:320px; height:320px; background:radial-gradient(circle,rgba(0,229,255,.17) 0%,transparent 70%); bottom:-110px; left:-30px; border-radius:50%; pointer-events:none; }
+    .banner-content { position:relative; z-index:2; text-align:center; padding:0 1.5rem; }
+    .banner-eyebrow { display:inline-block; font-size:.78rem; font-weight:900; text-transform:uppercase; letter-spacing:.18em; color:var(--accent-pink); background:rgba(255,110,180,.12); border:1px solid rgba(255,110,180,.35); border-radius:20px; padding:.28rem .9rem; margin-bottom:.9rem; }
+    .banner-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(1.9rem,5vw,4.8rem); letter-spacing:.06em; color:#fff; line-height:1.05; text-shadow:0 0 40px rgba(176,132,232,.7),0 4px 25px rgba(0,0,0,.6); }
+    .banner-title span { color:var(--accent-gold); text-shadow:0 0 28px rgba(255,215,0,.6); }
+
+    /* LIST SECTION */
+    .list-section { position:relative; z-index:1; }
+
+    /* ROW */
+    .post-row { width:100%; padding:3.8rem 0; position:relative; }
+    .post-row:nth-child(odd)  { background:var(--row-a); border-top:1px solid rgba(176,132,232,.13); border-bottom:1px solid rgba(176,132,232,.13); }
+    .post-row:nth-child(even) { background:var(--row-b); border-top:1px solid rgba(176,132,232,.08); border-bottom:1px solid rgba(176,132,232,.08); }
+
+    /* Side accent bar */
+    .post-row:nth-child(1)::before { content:''; position:absolute; top:0; left:0; width:5px; height:100%; background:linear-gradient(180deg,var(--accent-pink),var(--vivid-purple)); }
+    .post-row:nth-child(2)::before { content:''; position:absolute; top:0; right:0; width:5px; height:100%; background:linear-gradient(180deg,var(--accent-gold),var(--vivid-purple)); }
+    .post-row:nth-child(3)::before { content:''; position:absolute; top:0; left:0; width:5px; height:100%; background:linear-gradient(180deg,var(--accent-cyan),var(--vivid-purple)); }
+    .post-row:nth-child(4)::before { content:''; position:absolute; top:0; right:0; width:5px; height:100%; background:linear-gradient(180deg,var(--light-purple),var(--accent-pink)); }
+
+    .row-inner { max-width:1100px; margin:0 auto; padding:0 2.5rem; display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:center; }
+
+    /* text-left rows: swap column order */
+    .post-row.text-left .col-img  { order:2; }
+    .post-row.text-left .col-text { order:1; }
+
+    /* IMAGE PLACEHOLDER */
+    .col-img { display:flex; justify-content:center; align-items:center; }
+
+    .img-placeholder { width:100%; max-width:420px; height:260px; border-radius:18px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.7rem; position:relative; overflow:hidden; transition:transform .35s ease, box-shadow .35s ease; }
+
+    .post-row:nth-child(1) .img-placeholder { background:linear-gradient(135deg,#2a0050,#5b2d8e); border:2px solid rgba(255,110,180,.3); box-shadow:0 8px 35px rgba(255,110,180,.18); }
+    .post-row:nth-child(2) .img-placeholder { background:linear-gradient(135deg,#1f0040,#3d1080); border:2px solid rgba(255,215,0,.25); box-shadow:0 8px 35px rgba(255,215,0,.14); }
+    .post-row:nth-child(3) .img-placeholder { background:linear-gradient(135deg,#001830,#003060); border:2px solid rgba(0,229,255,.25); box-shadow:0 8px 35px rgba(0,229,255,.14); }
+    .post-row:nth-child(4) .img-placeholder { background:linear-gradient(135deg,#200040,#4a1090); border:2px solid rgba(176,132,232,.3); box-shadow:0 8px 35px rgba(176,132,232,.18); }
+
+    .img-placeholder::before { content:''; position:absolute; inset:0; background: repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0px,rgba(255,255,255,.03) 1px,transparent 1px,transparent 30px), repeating-linear-gradient(-45deg,rgba(255,255,255,.03) 0px,rgba(255,255,255,.03) 1px,transparent 1px,transparent 30px); }
+
+    .img-placeholder:hover { transform:scale(1.025); }
+    .post-row:nth-child(1) .img-placeholder:hover { box-shadow:0 14px 45px rgba(255,110,180,.35); }
+    .post-row:nth-child(2) .img-placeholder:hover { box-shadow:0 14px 45px rgba(255,215,0,.3); }
+    .post-row:nth-child(3) .img-placeholder:hover { box-shadow:0 14px 45px rgba(0,229,255,.3); }
+    .post-row:nth-child(4) .img-placeholder:hover { box-shadow:0 14px 45px rgba(176,132,232,.35); }
+
+    .ph-icon  { font-size:3rem; position:relative; z-index:1; animation:float 3.5s ease-in-out infinite; }
+    .post-row:nth-child(2) .ph-icon { animation-delay:.5s; }
+    .post-row:nth-child(3) .ph-icon { animation-delay:1s; }
+    .post-row:nth-child(4) .ph-icon { animation-delay:1.5s; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    .ph-label { font-family:'Bebas Neue',sans-serif; font-size:1.2rem; letter-spacing:.22em; color:rgba(176,132,232,.6); position:relative; z-index:1; }
+    .ph-dim   { font-size:.72rem; color:rgba(176,132,232,.38); font-weight:700; letter-spacing:.1em; position:relative; z-index:1; }
+
+    /* TEXT COLUMN */
+    .col-text { display:flex; flex-direction:column; gap:1.1rem; }
+
+    /* Big ghost number */
+    .post-number { font-family:'Bebas Neue',sans-serif; font-size:7rem; line-height:1; letter-spacing:.05em; opacity:.06; position:absolute; pointer-events:none; user-select:none; color:var(--white); }
+    .post-row:nth-child(odd)  .post-number { right:2.5rem; top:.5rem; }
+    .post-row:nth-child(even) .post-number { left:2.5rem;  top:.5rem; }
+
+    .tag { display:inline-block; align-self:flex-start; font-size:.72rem; font-weight:900; text-transform:uppercase; letter-spacing:.14em; padding:.28rem .9rem; border-radius:20px; }
+    .post-row:nth-child(1) .tag { background:rgba(255,110,180,.15); color:var(--accent-pink); border:1px solid rgba(255,110,180,.35); }
+    .post-row:nth-child(2) .tag { background:rgba(255,215,0,.12); color:var(--accent-gold); border:1px solid rgba(255,215,0,.32); }
+    .post-row:nth-child(3) .tag { background:rgba(0,229,255,.1); color:var(--accent-cyan); border:1px solid rgba(0,229,255,.3); }
+    .post-row:nth-child(4) .tag { background:rgba(176,132,232,.13); color:var(--light-purple); border:1px solid rgba(176,132,232,.35); }
+
+    .post-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(1.8rem,3.2vw,2.8rem); letter-spacing:.06em; line-height:1.05; }
+    .post-row:nth-child(1) .post-title { color:var(--accent-pink); }
+    .post-row:nth-child(2) .post-title { color:var(--accent-gold); }
+    .post-row:nth-child(3) .post-title { color:var(--accent-cyan); }
+    .post-row:nth-child(4) .post-title { color:var(--light-purple); }
+
+    .post-desc { color:var(--text-light); font-size:1rem; line-height:1.8; font-weight:600; }
+
+    .btn-read { display:inline-block; align-self:flex-start; text-decoration:none; font-family:'Nunito',sans-serif; font-weight:900; font-size:.88rem; padding:.7rem 1.7rem; border-radius:50px; text-transform:uppercase; letter-spacing:.08em; transition:all .3s ease; }
+    .post-row:nth-child(1) .btn-read { background:linear-gradient(135deg,var(--accent-pink),var(--vivid-purple)); color:#fff; box-shadow:0 5px 20px rgba(255,110,180,.35); }
+    .post-row:nth-child(1) .btn-read:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(255,110,180,.55); }
+    .post-row:nth-child(2) .btn-read { background:linear-gradient(135deg,var(--accent-gold),#c88000); color:var(--black); box-shadow:0 5px 20px rgba(255,215,0,.3); }
+    .post-row:nth-child(2) .btn-read:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(255,215,0,.5); }
+    .post-row:nth-child(3) .btn-read { background:linear-gradient(135deg,var(--accent-cyan),#007fa8); color:var(--black); box-shadow:0 5px 20px rgba(0,229,255,.28); }
+    .post-row:nth-child(3) .btn-read:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,229,255,.48); }
+    .post-row:nth-child(4) .btn-read { background:linear-gradient(135deg,var(--light-purple),var(--vivid-purple)); color:#fff; box-shadow:0 5px 20px rgba(176,132,232,.32); }
+    .post-row:nth-child(4) .btn-read:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(176,132,232,.52); }
+
+    /* FOOTER */
+    footer { position:relative; z-index:1; background:rgba(10,0,25,.97); border-top:2px solid var(--vivid-purple); padding:3rem 2rem 2rem; text-align:center; }
+    .footer-logo { font-family:'Pacifico',cursive; font-size:1.7rem; color:var(--accent-gold); text-decoration:none; display:block; margin-bottom:.8rem; text-shadow:0 0 16px rgba(255,215,0,.4); }
+    .footer-tagline { color:var(--light-purple); font-size:.92rem; font-weight:700; margin-bottom:1.4rem; }
+    .footer-nav { display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.8rem; }
+    .footer-nav a { text-decoration:none; color:var(--text-light); font-size:.85rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; transition:color .3s; }
+    .footer-nav a:hover { color:var(--accent-pink); }
+    .footer-hearts { font-size:1.3rem; letter-spacing:.3rem; margin-bottom:.9rem; }
+    .footer-copy { color:rgba(176,132,232,.45); font-size:.8rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .row-inner { grid-template-columns:1fr; gap:2rem; }
+      .post-row.text-left .col-img  { order:1; }
+      .post-row.text-left .col-text { order:2; }
+      .img-placeholder { max-width:100%; height:200px; }
+      .post-number { display:none; }
+    }
+    @media (max-width: 560px) {
+      .nav-links a { font-size:.72rem; padding:.38rem .55rem; }
+      .banner { height:200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">✨ BTS Forever</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="needtoknow.html" class="active">Need To Know</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+  </nav>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <span class="ticker-inner">
+      💜 WELCOME TO BTS FOREVER &nbsp;&nbsp;✨ EVERYTHING NEW ARMYS NEED TO KNOW &nbsp;&nbsp;🎵 START YOUR JOURNEY HERE &nbsp;&nbsp;🌟 MADE WITH LOVE BY HADLEY HILLSTEAD &nbsp;&nbsp;💜 WELCOME TO BTS FOREVER &nbsp;&nbsp;✨ EVERYTHING NEW ARMYS NEED TO KNOW
+    </span>
+  </div>
+
+  <!-- BANNER -->
+  <div class="banner">
+    <div class="banner-content">
+      <span class="banner-eyebrow">💜 For Brand New ARMYs</span>
+      <h1 class="banner-title">What New ARMYs <span>Need To Know</span></h1>
+    </div>
+  </div>
+
+  <!-- ALTERNATING LIST -->
+  <div class="list-section">
+
+    <!-- ROW 1 — image left, text right -->
+    <div class="post-row img-left">
+      <span class="post-number">01</span>
+      <div class="row-inner">
+        <div class="col-img">
+          <div class="img-placeholder">
+            <span class="ph-icon">🎵</span>
+            <div class="ph-label">IMAGE</div>
+            <div class="ph-dim">420 × 260 px</div>
+          </div>
+        </div>
+        <div class="col-text">
+          <span class="tag">💜 Getting Started</span>
+          <h2 class="post-title">Where to Begin: Your First BTS Playlist</h2>
+          <p class="post-desc">Placeholder text — this post walks brand-new ARMYs through the perfect starter playlist. Think of it as your onboarding guide to BTS music: which era to explore first, which songs are absolute must-listens, and why the discography is so much deeper than you expect. You'll never know where to start until someone tells you — and that's exactly what this post is here for.</p>
+          <a href="#" class="btn-read">Read More →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2 — text left, image right -->
+    <div class="post-row text-left">
+      <span class="post-number">02</span>
+      <div class="row-inner">
+        <div class="col-text">
+          <span class="tag">⭐ Member Guide</span>
+          <h2 class="post-title">Meet the Members: Who Is Who in BTS?</h2>
+          <p class="post-desc">Placeholder text — this is the ultimate beginner-friendly guide to telling all seven members apart. From RM's dimples to Jungkook's tattoos, from Suga's genius to V's unique energy — this breakdown covers names, roles, personalities, and the little details that make each member unforgettable. Fair warning: you will absolutely have a bias by the end of this one.</p>
+          <a href="#" class="btn-read">Read More →</a>
+        </div>
+        <div class="col-img">
+          <div class="img-placeholder">
+            <span class="ph-icon">🌟</span>
+            <div class="ph-label">IMAGE</div>
+            <div class="ph-dim">420 × 260 px</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3 — image left, text right -->
+    <div class="post-row img-left">
+      <span class="post-number">03</span>
+      <div class="row-inner">
+        <div class="col-img">
+          <div class="img-placeholder">
+            <span class="ph-icon">📖</span>
+            <div class="ph-label">IMAGE</div>
+            <div class="ph-dim">420 × 260 px</div>
+          </div>
+        </div>
+        <div class="col-text">
+          <span class="tag">🗣️ ARMY Culture</span>
+          <h2 class="post-title">The ARMY Dictionary: Fandom Terms Decoded</h2>
+          <p class="post-desc">Placeholder text — new to the fandom and confused by what people mean when they say "bias wrecker," "Dynamite era," or "Run BTS"? This post is your pocket dictionary for ARMY culture. No more nodding along pretending you know what's going on — after reading this, you'll feel right at home in every comment section and fan conversation online.</p>
+          <a href="#" class="btn-read">Read More →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 4 — text left, image right -->
+    <div class="post-row text-left">
+      <span class="post-number">04</span>
+      <div class="row-inner">
+        <div class="col-text">
+          <span class="tag">🎤 Must Watch</span>
+          <h2 class="post-title">Top 5 BTS Performances Every New Fan Must See</h2>
+          <p class="post-desc">Placeholder text — BTS on stage is a completely different experience from just listening to their music. This post rounds up five iconic performances — from historic award show moments to intimate concert clips — that show exactly why they became a global phenomenon. Have tissues ready. Have your jaw-drop face ready. You have been officially warned. 💜</p>
+          <a href="#" class="btn-read">Read More →</a>
+        </div>
+        <div class="col-img">
+          <div class="img-placeholder">
+            <span class="ph-icon">🎤</span>
+            <div class="ph-label">IMAGE</div>
+            <div class="ph-dim">420 × 260 px</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="index.html" class="footer-logo">✨ BTS Forever</a>
+    <p class="footer-tagline">A fan site made with 💜 by Hadley Hillstead</p>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="needtoknow.html">Need To Know</a>
+      <a href="contact.html">Contact</a>
+      <a href="gallery.html">Gallery</a>
+    </nav>
+    <div class="footer-hearts">💜 💜 💜 💜 💜 💜 💜</div>
+    <p class="footer-copy">© 2026 Hadley Hillstead · BTS Forever Fan Site · Not affiliated with HYBE or BTS · Fan-made with ✨ &amp; love</p>
+  </footer>
+
+</body>
+</html>

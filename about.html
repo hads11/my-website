@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Me – BTS Forever by Hadley Hillstead</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&family=Pacifico&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black:         #0a0a0f;
+      --deep-purple:   #1a0030;
+      --royal-purple:  #5b2d8e;
+      --vivid-purple:  #7c3dbf;
+      --light-purple:  #b084e8;
+      --accent-pink:   #ff6eb4;
+      --accent-gold:   #ffd700;
+      --accent-cyan:   #00e5ff;
+      --accent-green:  #39e09b;
+      --white:         #f5f0ff;
+      --text-light:    #e8d8ff;
+      --card-bg:       rgba(26,0,48,0.65);
+      --border-subtle: rgba(176,132,232,0.22);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--black);
+      color: var(--white);
+      font-family: 'Nunito', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(1px 1px at  8% 12%, rgba(255,255,255,.75) 0%, transparent 100%),
+        radial-gradient(1px 1px at 22% 58%, rgba(255,255,255,.50) 0%, transparent 100%),
+        radial-gradient(1px 1px at 43% 28%, rgba(255,255,255,.65) 0%, transparent 100%),
+        radial-gradient(1px 1px at 61% 77%, rgba(255,255,255,.55) 0%, transparent 100%),
+        radial-gradient(1px 1px at 74% 18%, rgba(255,255,255,.80) 0%, transparent 100%),
+        radial-gradient(1px 1px at 88% 52%, rgba(255,255,255,.45) 0%, transparent 100%),
+        radial-gradient(2px 2px at 16% 42%, rgba(176,132,232,.55) 0%, transparent 100%),
+        radial-gradient(2px 2px at 68% 63%, rgba(176,132,232,.45) 0%, transparent 100%),
+        radial-gradient(2px 2px at 50% 90%, rgba(255,110,180,.35) 0%, transparent 100%);
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(10,0,25,.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 2px solid var(--vivid-purple);
+      height: 68px; padding: 0 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 4px 30px rgba(91,45,142,.5);
+    }
+    .nav-logo {
+      font-family: 'Pacifico', cursive; font-size: 1.45rem;
+      color: var(--accent-gold); text-decoration: none;
+      text-shadow: 0 0 16px rgba(255,215,0,.5);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .nav-links { display: flex; list-style: none; gap: .2rem; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-light);
+      font-weight: 800; font-size: .85rem;
+      padding: .45rem .95rem; border-radius: 25px;
+      letter-spacing: .04em; text-transform: uppercase;
+      transition: all .3s ease;
+    }
+    .nav-links a:hover { color: var(--black); background: var(--light-purple); box-shadow: 0 0 14px rgba(176,132,232,.55); }
+    .nav-links a.active { background: var(--accent-gold); color: var(--black); box-shadow: 0 0 14px rgba(255,215,0,.45); }
+
+    /* TICKER */
+    .ticker-wrap {
+      position: relative; z-index: 1; overflow: hidden;
+      background: linear-gradient(90deg, var(--accent-pink), var(--vivid-purple), var(--accent-cyan), var(--accent-gold), var(--accent-pink));
+      background-size: 300% 100%; animation: grad-shift 7s ease infinite;
+      padding: .55rem 0; white-space: nowrap;
+    }
+    @keyframes grad-shift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    .ticker-inner {
+      display: inline-block; animation: ticker 28s linear infinite;
+      font-family: 'Bebas Neue', sans-serif; font-size: .95rem;
+      letter-spacing: .22em; color: var(--black);
+    }
+    @keyframes ticker { from{transform:translateX(100vw)} to{transform:translateX(-100%)} }
+
+    /* BANNER */
+    .banner {
+      position: relative; z-index: 1; width: 100%; height: 300px;
+      background: linear-gradient(135deg, #0f001f 0%, #2d0a5a 40%, #5b2d8e 70%, #1a003a 100%);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .banner::before {
+      content:''; position:absolute; width:480px; height:480px;
+      background:radial-gradient(circle,rgba(255,110,180,.2) 0%,transparent 70%);
+      top:-160px; right:-60px; pointer-events:none;
+    }
+    .banner::after {
+      content:''; position:absolute; width:360px; height:360px;
+      background:radial-gradient(circle,rgba(0,229,255,.15) 0%,transparent 70%);
+      bottom:-120px; left:-40px; pointer-events:none;
+    }
+    .banner-content { position:relative; z-index:2; text-align:center; }
+    .banner-eyebrow {
+      display:inline-block; font-size:.78rem; font-weight:900;
+      text-transform:uppercase; letter-spacing:.18em;
+      color:var(--accent-pink); background:rgba(255,110,180,.12);
+      border:1px solid rgba(255,110,180,.35); border-radius:20px;
+      padding:.28rem 1rem; margin-bottom:.9rem;
+    }
+    .banner-title {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(3rem,8vw,6.5rem);
+      line-height:.92; letter-spacing:.06em; color:#fff;
+      text-shadow:0 0 40px rgba(176,132,232,.7),0 4px 30px rgba(0,0,0,.6);
+    }
+    .banner-title span { color:var(--accent-gold); }
+
+    /* BIO */
+    .bio-section {
+      position:relative; z-index:1;
+      max-width:780px; margin:0 auto;
+      padding:5rem 2rem 4rem; text-align:center;
+    }
+    .avatar-wrap {
+      width:300px; height:300px; border-radius:50%;
+      background:linear-gradient(145deg,#1c0035,#3b1270);
+      border:3px solid var(--vivid-purple);
+      box-shadow:0 0 0 6px rgba(124,61,191,.2),0 16px 50px rgba(91,45,142,.5);
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.6rem;
+      margin:0 auto 2.5rem; position:relative; overflow:hidden;
+      animation:avatar-glow 4s ease-in-out infinite;
+    }
+    @keyframes avatar-glow {
+      0%,100%{box-shadow:0 0 0 6px rgba(124,61,191,.2),0 16px 50px rgba(91,45,142,.5)}
+      50%{box-shadow:0 0 0 10px rgba(255,110,180,.25),0 20px 60px rgba(255,110,180,.3)}
+    }
+    .avatar-icon { font-size:4.5rem; animation:float 3.5s ease-in-out infinite; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    .avatar-label { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:.2em; color:var(--light-purple); }
+    .avatar-dim { font-size:.72rem; color:rgba(176,132,232,.45); font-weight:700; letter-spacing:.08em; }
+
+    .bio-heading {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(2.2rem,5vw,3.5rem);
+      letter-spacing:.06em; line-height:1; margin-bottom:1.4rem;
+    }
+    .bio-heading span { color:var(--accent-gold); }
+    .bio-text { color:var(--text-light); font-size:1.05rem; line-height:1.8; font-weight:600; margin-bottom:1.2rem; }
+
+    /* DIVIDER */
+    .divider {
+      position:relative; z-index:1; height:2px;
+      background:linear-gradient(90deg,transparent,var(--vivid-purple),var(--accent-pink),var(--vivid-purple),transparent);
+      margin:0 2rem;
+    }
+
+    /* SKILLS */
+    .skills-section {
+      position:relative; z-index:1;
+      max-width:1140px; margin:0 auto; padding:4.5rem 2rem 4rem;
+    }
+    .section-heading {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(2rem,5vw,3rem);
+      letter-spacing:.08em; text-align:center; margin-bottom:.5rem;
+    }
+    .section-heading span { color:var(--accent-cyan); }
+    .section-sub { text-align:center; color:var(--light-purple); font-size:1rem; font-weight:600; margin-bottom:2.8rem; }
+
+    .skills-row { display:grid; grid-template-columns:repeat(4,1fr); gap:1.4rem; }
+
+    .skill-card {
+      background:var(--card-bg); border:1px solid var(--border-subtle);
+      border-radius:22px; padding:2rem 1.4rem; text-align:center;
+      transition:all .35s ease; position:relative; overflow:hidden;
+    }
+    .skill-card::after {
+      content:''; position:absolute; bottom:0; left:0; right:0;
+      height:3px; border-radius:0 0 22px 22px; opacity:0; transition:opacity .35s;
+    }
+    .skill-card:nth-child(1)::after { background:var(--accent-gold); }
+    .skill-card:nth-child(2)::after { background:var(--accent-pink); }
+    .skill-card:nth-child(3)::after { background:var(--accent-cyan); }
+    .skill-card:nth-child(4)::after { background:var(--accent-green); }
+    .skill-card:hover { transform:translateY(-7px); }
+    .skill-card:nth-child(1):hover { border-color:var(--accent-gold); box-shadow:0 12px 34px rgba(255,215,0,.18); }
+    .skill-card:nth-child(2):hover { border-color:var(--accent-pink); box-shadow:0 12px 34px rgba(255,110,180,.2); }
+    .skill-card:nth-child(3):hover { border-color:var(--accent-cyan); box-shadow:0 12px 34px rgba(0,229,255,.18); }
+    .skill-card:nth-child(4):hover { border-color:var(--accent-green); box-shadow:0 12px 34px rgba(57,224,155,.18); }
+    .skill-card:hover::after { opacity:1; }
+
+    .skill-emoji { font-size:2.8rem; display:block; margin-bottom:.9rem; animation:bob 3s ease-in-out infinite; }
+    .skill-card:nth-child(2) .skill-emoji { animation-delay:.4s; }
+    .skill-card:nth-child(3) .skill-emoji { animation-delay:.8s; }
+    .skill-card:nth-child(4) .skill-emoji { animation-delay:1.2s; }
+    @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+
+    .skill-name {
+      font-family:'Nunito',sans-serif; font-weight:900;
+      font-size:1.05rem; letter-spacing:.04em;
+      margin-bottom:.55rem; text-transform:uppercase;
+    }
+    .skill-card:nth-child(1) .skill-name { color:var(--accent-gold); }
+    .skill-card:nth-child(2) .skill-name { color:var(--accent-pink); }
+    .skill-card:nth-child(3) .skill-name { color:var(--accent-cyan); }
+    .skill-card:nth-child(4) .skill-name { color:var(--accent-green); }
+    .skill-desc { color:var(--text-light); font-size:.9rem; line-height:1.6; font-weight:600; }
+
+    /* FUN FACTS */
+    .facts-section {
+      position:relative; z-index:1;
+      background:linear-gradient(135deg,#1a0030 0%,#2d0a5a 50%,#1a0030 100%);
+      border-top:2px solid var(--vivid-purple); border-bottom:2px solid var(--vivid-purple);
+      padding:4.5rem 2rem;
+    }
+    .facts-inner { max-width:1140px; margin:0 auto; }
+    .facts-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; margin-top:2.8rem; }
+
+    .fact-card {
+      background:rgba(10,0,25,.7); border:1px solid rgba(255,110,180,.22);
+      border-radius:22px; padding:2.4rem 1.8rem;
+      position:relative; overflow:hidden; transition:all .35s ease;
+    }
+    .fact-card:hover { transform:translateY(-7px); border-color:var(--accent-pink); box-shadow:0 14px 38px rgba(255,110,180,.2); }
+    .fact-card:nth-child(2):hover { border-color:var(--accent-gold); box-shadow:0 14px 38px rgba(255,215,0,.2); }
+    .fact-card:nth-child(3):hover { border-color:var(--accent-cyan); box-shadow:0 14px 38px rgba(0,229,255,.18); }
+
+    .fact-number {
+      font-family:'Bebas Neue',sans-serif; font-size:5rem; line-height:1;
+      letter-spacing:.05em; position:absolute; top:-.5rem; right:1.2rem;
+      opacity:.08; pointer-events:none;
+    }
+    .fact-card:nth-child(1) .fact-number { color:var(--accent-pink); }
+    .fact-card:nth-child(2) .fact-number { color:var(--accent-gold); }
+    .fact-card:nth-child(3) .fact-number { color:var(--accent-cyan); }
+
+    .fact-num-label { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:.2em; margin-bottom:1rem; display:block; }
+    .fact-card:nth-child(1) .fact-num-label { color:var(--accent-pink); }
+    .fact-card:nth-child(2) .fact-num-label { color:var(--accent-gold); }
+    .fact-card:nth-child(3) .fact-num-label { color:var(--accent-cyan); }
+
+    .fact-icon { font-size:2.2rem; display:block; margin-bottom:.8rem; }
+    .fact-text { color:var(--text-light); font-size:1rem; line-height:1.7; font-weight:600; position:relative; z-index:1; }
+
+    /* FOOTER */
+    footer {
+      position:relative; z-index:1;
+      background:rgba(10,0,25,.97); border-top:2px solid var(--vivid-purple);
+      padding:3rem 2rem 2rem; text-align:center;
+    }
+    .footer-logo {
+      font-family:'Pacifico',cursive; font-size:1.7rem;
+      color:var(--accent-gold); text-decoration:none; display:block;
+      margin-bottom:.8rem; text-shadow:0 0 16px rgba(255,215,0,.4);
+    }
+    .footer-tagline { color:var(--light-purple); font-size:.92rem; font-weight:700; margin-bottom:1.4rem; }
+    .footer-nav { display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.8rem; }
+    .footer-nav a {
+      text-decoration:none; color:var(--text-light);
+      font-size:.85rem; font-weight:800; text-transform:uppercase;
+      letter-spacing:.06em; transition:color .3s;
+    }
+    .footer-nav a:hover { color:var(--accent-pink); }
+    .footer-hearts { font-size:1.3rem; letter-spacing:.3rem; margin-bottom:.9rem; }
+    .footer-copy { color:rgba(176,132,232,.45); font-size:.8rem; }
+
+    /* RESPONSIVE */
+    @media (max-width:900px) {
+      .skills-row { grid-template-columns:repeat(2,1fr); }
+      .facts-row  { grid-template-columns:1fr; max-width:480px; margin-left:auto; margin-right:auto; }
+    }
+    @media (max-width:600px) {
+      .skills-row { grid-template-columns:1fr; max-width:380px; margin:0 auto; }
+      .nav-links a { font-size:.72rem; padding:.38rem .55rem; }
+      .banner { height:220px; }
+      .avatar-wrap { width:220px; height:220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">✨ BTS Forever</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="needtoknow.html">Need To Know</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+  </nav>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <span class="ticker-inner">
+      💜 GET TO KNOW HADLEY HILLSTEAD &nbsp;&nbsp;✨ BTS SUPERFAN &amp; PROUD ARMY &nbsp;&nbsp;🌟 MADE WITH LOVE FOR NEW ARMYs &nbsp;&nbsp;🎵 7 MEMBERS 1 LEGENDARY GROUP &nbsp;&nbsp;💜 GET TO KNOW HADLEY HILLSTEAD &nbsp;&nbsp;✨ BTS SUPERFAN &amp; PROUD ARMY
+    </span>
+  </div>
+
+  <!-- BANNER -->
+  <div class="banner">
+    <div class="banner-content">
+      <span class="banner-eyebrow">✨ All About Me</span>
+      <h1 class="banner-title">My <span>Story</span></h1>
+    </div>
+  </div>
+
+  <!-- BIO SECTION -->
+  <div class="bio-section">
+    <div class="avatar-wrap">
+      <span class="avatar-icon">🌟</span>
+      <div class="avatar-label">PHOTO</div>
+      <div class="avatar-dim">300 × 300 px</div>
+    </div>
+
+    <h2 class="bio-heading">Hi, I am <span>Hadley Hillstead</span> 👋</h2>
+
+    <p class="bio-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. I'm a college student, a proud member of the ARMY fandom, and the creator of this little corner of the internet. I built this site because when I first discovered BTS, I was completely overwhelmed — there was so much to learn and not enough beginner-friendly guides out there. So I made one myself! Whether you're here from a viral video, a friend's recommendation, or a random late-night rabbit hole, welcome — I'm so glad you found this place. 💜
+    </p>
+
+    <p class="bio-text">
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. When I'm not deep-diving into BTS lore or updating this website, you'll probably find me in the kitchen trying a new recipe, at the gym with BTS blasting in my headphones, or curled up somewhere reading a good book. This site is my love letter to the group that genuinely changed my life — and I hope it helps you fall just as hard as I did. Buckle up, new ARMY! ✨
+    </p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <div class="skills-section">
+    <h2 class="section-heading">Things I <span>Love</span></h2>
+    <p class="section-sub">A few of my favorite things beyond the BTS universe 🎉</p>
+    <div class="skills-row">
+
+      <div class="skill-card">
+        <span class="skill-emoji">🎵</span>
+        <div class="skill-name">Music</div>
+        <p class="skill-desc">BTS lives rent-free in my playlist 24/7, but I also love exploring new genres and artists that push creative boundaries.</p>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-emoji">🍳</span>
+        <div class="skill-name">Cooking</div>
+        <p class="skill-desc">I love experimenting in the kitchen — especially trying Korean recipes ever since I became an ARMY and fell in love with the culture.</p>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-emoji">🧁</span>
+        <div class="skill-name">Baking</div>
+        <p class="skill-desc">There's nothing better than a fresh batch of cookies straight from the oven — my friends would enthusiastically agree.</p>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-emoji">📚</span>
+        <div class="skill-name">Reading</div>
+        <p class="skill-desc">From fantasy novels to self-help books, reading is my favorite way to slow down and recharge after a busy week.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FUN FACTS -->
+  <div class="facts-section">
+    <div class="facts-inner">
+      <h2 class="section-heading" style="color:var(--white)">Fun <span style="color:var(--accent-pink)">Facts</span> About Me</h2>
+      <p class="section-sub">A few things you probably didn't know — now you do! 🤫✨</p>
+      <div class="facts-row">
+
+        <div class="fact-card">
+          <div class="fact-number">01</div>
+          <span class="fact-num-label">— FACT 01 —</span>
+          <span class="fact-icon">🎤</span>
+          <p class="fact-text">I became an ARMY after accidentally watching a BTS performance at 2 AM during finals week — best bad decision I've ever made, absolutely zero regrets.</p>
+        </div>
+
+        <div class="fact-card">
+          <div class="fact-number">02</div>
+          <span class="fact-num-label">— FACT 02 —</span>
+          <span class="fact-icon">🌍</span>
+          <p class="fact-text">Learning about Korean culture through BTS inspired me to start picking up Korean phrases — I can now say "I love you" and order food, which is everything I need.</p>
+        </div>
+
+        <div class="fact-card">
+          <div class="fact-number">03</div>
+          <span class="fact-num-label">— FACT 03 —</span>
+          <span class="fact-icon">🏋️</span>
+          <p class="fact-text">My entire gym playlist is BTS songs — "Dionysus" is scientifically proven (by me, personally) to make you lift heavier and feel completely invincible.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="index.html" class="footer-logo">✨ BTS Forever</a>
+    <p class="footer-tagline">A fan site made with 💜 by Hadley Hillstead</p>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="needtoknow.html">Need To Know</a>
+      <a href="contact.html">Contact</a>
+      <a href="gallery.html">Gallery</a>
+    </nav>
+    <div class="footer-hearts">💜 💜 💜 💜 💜 💜 💜</div>
+    <p class="footer-copy">© 2026 Hadley Hillstead · BTS Forever Fan Site · Not affiliated with HYBE or BTS · Fan-made with ✨ &amp; love</p>
+  </footer>
+
+</body>
+</html>
