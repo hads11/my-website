@@ -280,6 +280,217 @@
       margin:0 2rem;
     }
 
+    /* ── DISCUSSION SECTION ── */
+    .discussion-section {
+      position: relative; z-index: 1;
+      background: linear-gradient(180deg, rgba(10,0,20,.95) 0%, rgba(26,0,48,.85) 100%);
+      border-top: 2px solid rgba(124,61,191,.5);
+      padding: 4.5rem 2rem 5rem;
+    }
+    .discussion-inner { max-width: 860px; margin: 0 auto; }
+
+    .discussion-header { text-align: center; margin-bottom: 3rem; }
+    .discussion-eyebrow {
+      display: inline-block; font-size: .76rem; font-weight: 900;
+      text-transform: uppercase; letter-spacing: .18em;
+      color: var(--accent-pink); background: rgba(255,110,180,.1);
+      border: 1px solid rgba(255,110,180,.3); border-radius: 20px;
+      padding: .28rem .9rem; margin-bottom: .9rem;
+    }
+    .discussion-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      letter-spacing: .06em; color: #fff; line-height: 1.05;
+      text-shadow: 0 0 30px rgba(176,132,232,.5);
+    }
+    .discussion-title span { color: var(--accent-gold); }
+    .discussion-subtitle {
+      color: var(--light-purple); font-size: .95rem;
+      font-weight: 700; margin-top: .6rem;
+    }
+
+    /* Comment form */
+    .comment-form {
+      background: rgba(26,0,48,.7);
+      border: 1px solid rgba(176,132,232,.28);
+      border-radius: 20px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 2.8rem;
+    }
+    .comment-form h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem; letter-spacing: .08em;
+      color: var(--accent-cyan); margin-bottom: 1.3rem;
+    }
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin-bottom: 1rem;
+    }
+    .form-group { display: flex; flex-direction: column; gap: .4rem; }
+    .form-group label {
+      font-size: .78rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--light-purple);
+    }
+    .form-group input,
+    .form-group textarea {
+      background: rgba(10,0,25,.7);
+      border: 1px solid rgba(176,132,232,.3);
+      border-radius: 12px;
+      padding: .75rem 1rem;
+      color: var(--white); font-family: 'Nunito', sans-serif;
+      font-size: .95rem; font-weight: 600;
+      transition: border-color .3s ease, box-shadow .3s ease;
+      resize: none; outline: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(176,132,232,.38); }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--vivid-purple);
+      box-shadow: 0 0 0 3px rgba(124,61,191,.2);
+    }
+    .form-group textarea { min-height: 110px; }
+
+    /* Reaction emoji row */
+    .reaction-row {
+      display: flex; align-items: center; gap: .6rem;
+      flex-wrap: wrap; margin-bottom: 1.2rem;
+    }
+    .reaction-label {
+      font-size: .78rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--light-purple); margin-right: .2rem;
+    }
+    .reaction-btn {
+      background: rgba(10,0,25,.6); border: 1px solid rgba(176,132,232,.25);
+      border-radius: 20px; padding: .3rem .75rem; cursor: pointer;
+      font-size: .92rem; transition: all .25s ease; color: var(--white);
+      font-family: 'Nunito', sans-serif; font-weight: 700;
+    }
+    .reaction-btn:hover,
+    .reaction-btn.selected {
+      background: rgba(124,61,191,.35);
+      border-color: var(--vivid-purple);
+      box-shadow: 0 0 10px rgba(124,61,191,.3);
+      transform: scale(1.08);
+    }
+
+    .form-submit-row { display: flex; justify-content: flex-end; margin-top: .5rem; }
+    .submit-btn {
+      font-family: 'Nunito', sans-serif; font-size: .9rem; font-weight: 900;
+      text-transform: uppercase; letter-spacing: .1em;
+      padding: .75rem 2rem; border-radius: 25px; cursor: pointer;
+      border: 2px solid var(--vivid-purple);
+      background: linear-gradient(135deg, var(--vivid-purple), #9350d4);
+      color: #fff; transition: all .3s ease;
+      box-shadow: 0 0 16px rgba(124,61,191,.35);
+    }
+    .submit-btn:hover {
+      background: linear-gradient(135deg, #9350d4, var(--accent-pink));
+      border-color: var(--accent-pink);
+      box-shadow: 0 0 28px rgba(255,110,180,.45);
+      transform: translateY(-2px);
+    }
+
+    /* Comments list */
+    .comments-list { display: flex; flex-direction: column; gap: 1.3rem; }
+
+    .comment-card {
+      background: rgba(26,0,48,.55);
+      border: 1px solid rgba(176,132,232,.2);
+      border-radius: 18px; padding: 1.4rem 1.6rem;
+      transition: border-color .3s ease, box-shadow .3s ease;
+    }
+    .comment-card:hover {
+      border-color: rgba(176,132,232,.45);
+      box-shadow: 0 6px 28px rgba(91,45,142,.22);
+    }
+    .comment-card:nth-child(3n+1) { border-left: 3px solid rgba(255,110,180,.5); }
+    .comment-card:nth-child(3n+2) { border-left: 3px solid rgba(255,215,0,.4); }
+    .comment-card:nth-child(3n)   { border-left: 3px solid rgba(0,229,255,.4); }
+
+    .comment-meta {
+      display: flex; align-items: center; gap: .8rem;
+      margin-bottom: .75rem; flex-wrap: wrap;
+    }
+    .comment-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif; font-size: 1rem;
+      letter-spacing: .05em; flex-shrink: 0;
+    }
+    .avatar-pink   { background: rgba(255,110,180,.2); border: 1px solid rgba(255,110,180,.4); color: var(--accent-pink); }
+    .avatar-gold   { background: rgba(255,215,0,.15);  border: 1px solid rgba(255,215,0,.35);  color: var(--accent-gold); }
+    .avatar-cyan   { background: rgba(0,229,255,.12);  border: 1px solid rgba(0,229,255,.35);  color: var(--accent-cyan); }
+    .avatar-purple { background: rgba(176,132,232,.15);border: 1px solid rgba(176,132,232,.4); color: var(--light-purple); }
+
+    .comment-name {
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      font-size: .95rem; color: var(--white);
+    }
+    .comment-date {
+      font-size: .75rem; font-weight: 700; color: rgba(176,132,232,.5);
+      text-transform: uppercase; letter-spacing: .06em;
+    }
+    .comment-reaction-badge {
+      margin-left: auto; font-size: .85rem;
+      background: rgba(124,61,191,.2); border: 1px solid rgba(176,132,232,.25);
+      border-radius: 14px; padding: .2rem .65rem;
+    }
+
+    .comment-text {
+      color: var(--text-light); font-size: .95rem;
+      font-weight: 600; line-height: 1.75;
+    }
+
+    .comment-like-row {
+      display: flex; align-items: center; gap: .6rem;
+      margin-top: .9rem; padding-top: .75rem;
+      border-top: 1px solid rgba(176,132,232,.12);
+    }
+    .like-btn {
+      background: transparent; border: 1px solid rgba(176,132,232,.25);
+      border-radius: 16px; padding: .28rem .8rem; cursor: pointer;
+      font-family: 'Nunito', sans-serif; font-size: .8rem; font-weight: 900;
+      color: rgba(176,132,232,.65); text-transform: uppercase; letter-spacing: .07em;
+      transition: all .25s ease;
+    }
+    .like-btn:hover, .like-btn.liked {
+      background: rgba(255,110,180,.15); border-color: rgba(255,110,180,.45);
+      color: var(--accent-pink);
+    }
+    .like-count { font-size: .82rem; color: rgba(176,132,232,.5); font-weight: 700; }
+
+    /* Empty state */
+    .comments-empty {
+      text-align: center; padding: 2.5rem 1rem;
+      color: rgba(176,132,232,.45); font-size: .95rem; font-weight: 700;
+    }
+    .comments-empty .empty-icon { font-size: 2.5rem; display: block; margin-bottom: .6rem; }
+
+    /* Sort / count bar */
+    .comments-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: .7rem;
+      margin-bottom: 1.4rem;
+    }
+    .comments-count {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
+      letter-spacing: .08em; color: var(--light-purple);
+    }
+    .comments-count span { color: var(--accent-gold); }
+    .sort-btns { display: flex; gap: .5rem; }
+    .sort-btn {
+      background: transparent; border: 1px solid rgba(176,132,232,.28);
+      border-radius: 16px; padding: .3rem .85rem; cursor: pointer;
+      font-family: 'Nunito', sans-serif; font-size: .78rem; font-weight: 900;
+      color: rgba(176,132,232,.6); text-transform: uppercase; letter-spacing: .08em;
+      transition: all .25s ease;
+    }
+    .sort-btn:hover, .sort-btn.active {
+      background: rgba(124,61,191,.25); border-color: var(--vivid-purple);
+      color: var(--light-purple);
+    }
+
     /* FOOTER */
     footer {
       position:relative; z-index:1;
@@ -344,6 +555,7 @@
     @media (max-width:680px)  { .masonry { column-count: 2; } .h-tall{height:260px} .h-medium{height:200px} .h-short{height:160px} }
     @media (max-width:420px)  { .masonry { column-count: 1; } }
     @media (max-width:600px)  { .nav-links a { font-size:.72rem; padding:.38rem .55rem; } .banner{height:200px;} }
+    @media (max-width:600px)  { .form-row { grid-template-columns: 1fr; } .comment-reaction-badge { margin-left: 0; } }
   </style>
 </head>
 <body>
@@ -363,7 +575,7 @@
   <!-- TICKER -->
   <div class="ticker-wrap">
     <span class="ticker-inner">
-      💜 WELCOME TO THE GALLERY &nbsp;&nbsp;✨ BTS FOREVER &nbsp;&nbsp;🌟 MADE WITH LOVE BY HADLEY HILLSTEAD &nbsp;&nbsp;🎵 ARMY FOR LIFE &nbsp;&nbsp;📸 CAPTURING MOMENTS &nbsp;&nbsp;💜 WELCOME TO THE GALLERY &nbsp;&nbsp;✨ BTS FOREVER
+      💜 WELCOME TO THE GALLERY &nbsp;&nbsp;✨ BTS FOREVER &nbsp;&nbsp;🌟 MADE WITH LOVE BY HADLEY &nbsp;&nbsp;🎵 ARMY FOR LIFE &nbsp;&nbsp;📸 CAPTURING MOMENTS &nbsp;&nbsp;💜 WELCOME TO THE GALLERY &nbsp;&nbsp;✨ BTS FOREVER
     </span>
   </div>
 
@@ -538,10 +750,64 @@
     </p>
   </div>
 
+  <!-- DISCUSSION SECTION -->
+  <div class="discussion-section">
+    <div class="discussion-inner">
+
+      <div class="discussion-header">
+        <span class="discussion-eyebrow">💬 ARMY Talk</span>
+        <h2 class="discussion-title">Join the <span>Discussion!</span></h2>
+        <p class="discussion-subtitle">Leave a comment, share your favorite photocard era, or tell me who your bias is! 💜</p>
+      </div>
+
+      <!-- Comment Form -->
+      <div class="comment-form">
+        <h3>✏️ Leave a Comment</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="commenterName">Your Name</label>
+            <input type="text" id="commenterName" placeholder="e.g. ARMYforever95" maxlength="40" />
+          </div>
+          <div class="form-group">
+            <label for="commenterFave">Favorite Member (optional)</label>
+            <input type="text" id="commenterFave" placeholder="e.g. Jungkook 💜" maxlength="40" />
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label for="commenterText">Your Comment</label>
+          <textarea id="commenterText" placeholder="What's your favorite era? Which photocard do you wish you had? Spill! 💜"></textarea>
+        </div>
+        <div class="reaction-row">
+          <span class="reaction-label">Mood:</span>
+          <button class="reaction-btn" data-reaction="💜 Stan" onclick="selectReaction(this)">💜 Stan</button>
+          <button class="reaction-btn" data-reaction="✨ Obsessed" onclick="selectReaction(this)">✨ Obsessed</button>
+          <button class="reaction-btn" data-reaction="😭 Emotional" onclick="selectReaction(this)">😭 Emotional</button>
+          <button class="reaction-btn" data-reaction="🔥 Hyped" onclick="selectReaction(this)">🔥 Hyped</button>
+          <button class="reaction-btn" data-reaction="🥺 Soft" onclick="selectReaction(this)">🥺 Soft</button>
+        </div>
+        <div class="form-submit-row">
+          <button class="submit-btn" onclick="submitComment()">Post Comment 💜</button>
+        </div>
+      </div>
+
+      <!-- Comments List -->
+      <div class="comments-topbar">
+        <span class="comments-count" id="commentsCount">💬 <span id="countNum">3</span> Comments</span>
+        <div class="sort-btns">
+          <button class="sort-btn active" id="sortNewest" onclick="sortComments('newest')">Newest</button>
+          <button class="sort-btn" id="sortOldest" onclick="sortComments('oldest')">Oldest</button>
+        </div>
+      </div>
+
+      <div class="comments-list" id="commentsList"></div>
+
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <a href="index.html" class="footer-logo">✨ BTS Forever</a>
-    <p class="footer-tagline">A fan site made with 💜 by Hadley Hillstead</p>
+    <p class="footer-tagline">A fan site made with 💜 by Hadley</p>
     <nav class="footer-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -550,10 +816,11 @@
       <a href="gallery.html">Gallery</a>
     </nav>
     <div class="footer-hearts">💜 💜 💜 💜 💜 💜 💜</div>
-    <p class="footer-copy">© 2026 Hadley Hillstead · BTS Forever Fan Site · Not affiliated with HYBE or BTS · Fan-made with ✨ &amp; love</p>
+    <p class="footer-copy">© 2026 Hadley · BTS Forever Fan Site · Not affiliated with HYBE or BTS · Fan-made with ✨ &amp; love</p>
   </footer>
 
   <script>
+    /* ── LIGHTBOX ── */
     function openLightbox(src, label) {
       const lb  = document.getElementById('lightbox');
       const img = document.getElementById('lbImg');
@@ -563,19 +830,157 @@
       lb.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
-
     function closeLightbox(e) {
       if (e.target === document.getElementById('lightbox')) closeLightboxBtn();
     }
-
     function closeLightboxBtn() {
       document.getElementById('lightbox').classList.remove('open');
       document.body.style.overflow = '';
     }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightboxBtn(); });
 
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeLightboxBtn();
-    });
+    /* ── DISCUSSION ── */
+    const avatarClasses = ['avatar-pink','avatar-gold','avatar-cyan','avatar-purple'];
+
+    let comments = [
+      {
+        id: 1,
+        name: 'JiminStan4ever',
+        fave: 'Jimin',
+        text: 'This collection is INSANE! The Fake Love era cards are my absolute favorites, the aesthetics were so dark and gorgeous. You have amazing taste, Hadley!! 💜',
+        reaction: '✨ Obsessed',
+        likes: 7,
+        liked: false,
+        avatar: 0,
+        timestamp: new Date('2026-05-01T14:22:00')
+      },
+      {
+        id: 2,
+        name: 'GoldenMaknaeArmy',
+        fave: 'Jungkook',
+        text: 'Omg the DNA era ones are giving me SO much nostalgia 😭 That era got me into BTS in the first place. Do you have any of the special edition DNA cards?',
+        reaction: '😭 Emotional',
+        likes: 4,
+        liked: false,
+        avatar: 1,
+        timestamp: new Date('2026-05-05T09:10:00')
+      },
+      {
+        id: 3,
+        name: 'BTSforeverHadley',
+        fave: 'RM',
+        text: 'Welcome to the site everyone!! 💜 This is my pride and joy collection, I\'m so happy to share it with fellow ARMYs. Drop your bias below, I want to know! My bias is RM but Jimin is always wrecking me 😫',
+        reaction: '🔥 Hyped',
+        likes: 12,
+        liked: false,
+        avatar: 3,
+        timestamp: new Date('2026-04-28T18:00:00')
+      }
+    ];
+
+    let sortOrder = 'newest';
+    let selectedReaction = '';
+
+    function selectReaction(btn) {
+      document.querySelectorAll('.reaction-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedReaction = btn.dataset.reaction;
+    }
+
+    function getInitials(name) {
+      return name.trim().slice(0,2).toUpperCase();
+    }
+
+    function formatDate(d) {
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    function renderComments() {
+      const list = document.getElementById('commentsList');
+      const sorted = [...comments].sort((a, b) =>
+        sortOrder === 'newest' ? b.timestamp - a.timestamp : a.timestamp - b.timestamp
+      );
+
+      if (sorted.length === 0) {
+        list.innerHTML = `<div class="comments-empty"><span class="empty-icon">💜</span>No comments yet — be the first to share your thoughts!</div>`;
+        return;
+      }
+
+      list.innerHTML = sorted.map(c => `
+        <div class="comment-card" id="card-${c.id}">
+          <div class="comment-meta">
+            <div class="comment-avatar ${avatarClasses[c.avatar % 4]}">${getInitials(c.name)}</div>
+            <div>
+              <div class="comment-name">${escHtml(c.name)}${c.fave ? ' <span style="color:rgba(176,132,232,.55);font-size:.82rem;font-weight:700;">· fave: ' + escHtml(c.fave) + '</span>' : ''}</div>
+              <div class="comment-date">${formatDate(c.timestamp)}</div>
+            </div>
+            ${c.reaction ? `<span class="comment-reaction-badge">${escHtml(c.reaction)}</span>` : ''}
+          </div>
+          <p class="comment-text">${escHtml(c.text)}</p>
+          <div class="comment-like-row">
+            <button class="like-btn${c.liked ? ' liked' : ''}" onclick="toggleLike(${c.id})">
+              ${c.liked ? '💜' : '🤍'} ${c.liked ? 'Liked' : 'Like'}
+            </button>
+            <span class="like-count">${c.likes} ${c.likes === 1 ? 'like' : 'likes'}</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('countNum').textContent = comments.length;
+    }
+
+    function toggleLike(id) {
+      const c = comments.find(x => x.id === id);
+      if (!c) return;
+      c.liked = !c.liked;
+      c.likes += c.liked ? 1 : -1;
+      renderComments();
+    }
+
+    function sortComments(order) {
+      sortOrder = order;
+      document.getElementById('sortNewest').classList.toggle('active', order === 'newest');
+      document.getElementById('sortOldest').classList.toggle('active', order === 'oldest');
+      renderComments();
+    }
+
+    function submitComment() {
+      const name = document.getElementById('commenterName').value.trim();
+      const fave = document.getElementById('commenterFave').value.trim();
+      const text = document.getElementById('commenterText').value.trim();
+
+      if (!name) { alert('Please enter your name! 💜'); return; }
+      if (!text)  { alert('Please write a comment! 💜'); return; }
+
+      comments.push({
+        id: Date.now(),
+        name, fave, text,
+        reaction: selectedReaction,
+        likes: 0,
+        liked: false,
+        avatar: Math.floor(Math.random() * 4),
+        timestamp: new Date()
+      });
+
+      document.getElementById('commenterName').value = '';
+      document.getElementById('commenterFave').value = '';
+      document.getElementById('commenterText').value = '';
+      document.querySelectorAll('.reaction-btn').forEach(b => b.classList.remove('selected'));
+      selectedReaction = '';
+
+      sortOrder = 'newest';
+      document.getElementById('sortNewest').classList.add('active');
+      document.getElementById('sortOldest').classList.remove('active');
+
+      renderComments();
+      document.getElementById('commentsList').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function escHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    renderComments();
   </script>
 
 </body>
