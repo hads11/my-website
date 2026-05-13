@@ -129,7 +129,135 @@
 
     .post-desc { color:var(--text-light); font-size:1rem; line-height:1.8; font-weight:600; }
 
+    /* BIAS QUIZ LINKS */
+    .quiz-links { display:flex; flex-direction:column; gap:.65rem; margin-top:.3rem; }
+    .quiz-link-btn {
+      display:inline-flex; align-items:center; gap:.6rem;
+      text-decoration:none;
+      font-family:'Nunito',sans-serif; font-size:.88rem; font-weight:900;
+      letter-spacing:.04em; text-transform:uppercase;
+      padding:.6rem 1.2rem; border-radius:25px;
+      border:2px solid rgba(176,132,232,.5);
+      background:rgba(124,61,191,.18);
+      color:var(--light-purple);
+      transition:all .3s ease;
+      align-self:flex-start;
+    }
+    .quiz-link-btn:hover {
+      background:rgba(176,132,232,.28);
+      border-color:var(--light-purple);
+      color:var(--white);
+      box-shadow:0 0 18px rgba(176,132,232,.35);
+      transform:translateX(4px);
+    }
+    .quiz-link-btn .qlb-arrow { font-size:1rem; transition:transform .3s ease; }
+    .quiz-link-btn:hover .qlb-arrow { transform:translateX(4px); }
 
+    /* FLASHCARD SECTION */
+    .flashcard-section {
+      position:relative; z-index:1;
+      background:linear-gradient(180deg, rgba(26,0,48,.85) 0%, rgba(10,0,20,.95) 100%);
+      border-top:2px solid rgba(124,61,191,.5);
+      padding:4rem 2rem 5rem;
+    }
+    .fc-inner { max-width:860px; margin:0 auto; }
+    .fc-header { text-align:center; margin-bottom:2.8rem; }
+    .fc-eyebrow {
+      display:inline-block; font-size:.76rem; font-weight:900; text-transform:uppercase;
+      letter-spacing:.18em; color:var(--accent-cyan);
+      background:rgba(0,229,255,.1); border:1px solid rgba(0,229,255,.3);
+      border-radius:20px; padding:.28rem .9rem; margin-bottom:.9rem;
+    }
+    .fc-title {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(2rem,5vw,3.8rem);
+      letter-spacing:.06em; color:#fff; line-height:1.05;
+      text-shadow:0 0 30px rgba(176,132,232,.5);
+    }
+    .fc-title span { color:var(--accent-gold); }
+    .fc-subtitle { color:var(--light-purple); font-size:.95rem; font-weight:700; margin-top:.6rem; }
+
+    /* Category tabs */
+    .fc-tabs { display:flex; justify-content:center; gap:.7rem; flex-wrap:wrap; margin-bottom:2.2rem; }
+    .fc-tab {
+      font-family:'Nunito',sans-serif; font-size:.82rem; font-weight:900;
+      text-transform:uppercase; letter-spacing:.1em;
+      padding:.45rem 1.1rem; border-radius:25px; cursor:pointer;
+      border:2px solid rgba(176,132,232,.35);
+      background:transparent; color:var(--light-purple);
+      transition:all .3s ease;
+    }
+    .fc-tab:hover { background:rgba(176,132,232,.15); border-color:var(--light-purple); }
+    .fc-tab.active { background:var(--vivid-purple); border-color:var(--vivid-purple); color:#fff; box-shadow:0 0 16px rgba(124,61,191,.45); }
+
+    /* Progress */
+    .fc-progress-bar-wrap {
+      background:rgba(176,132,232,.15); border-radius:10px;
+      height:6px; margin-bottom:1rem; overflow:hidden;
+    }
+    .fc-progress-bar {
+      height:100%; border-radius:10px;
+      background:linear-gradient(90deg,var(--accent-pink),var(--vivid-purple),var(--accent-cyan));
+      transition:width .4s ease;
+    }
+    .fc-progress-text { text-align:center; color:var(--light-purple); font-size:.82rem; font-weight:700; margin-bottom:1.8rem; letter-spacing:.05em; }
+
+    /* Card stage */
+    .fc-stage { perspective:1200px; width:100%; max-width:600px; margin:0 auto 2rem; }
+    .fc-card-wrap {
+      width:100%; height:280px;
+      position:relative; cursor:pointer;
+      transform-style:preserve-3d;
+      transition:transform .55s cubic-bezier(.4,0,.2,1);
+    }
+    .fc-card-wrap.flipped { transform:rotateY(180deg); }
+
+    .fc-face {
+      position:absolute; inset:0;
+      backface-visibility:hidden;
+      border-radius:20px;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      padding:2rem 2.5rem; text-align:center;
+      gap:1rem;
+    }
+    .fc-face-front {
+      background:linear-gradient(135deg,#1a0035,#3d1080);
+      border:2px solid rgba(176,132,232,.4);
+      box-shadow:0 10px 40px rgba(91,45,142,.3);
+    }
+    .fc-face-back {
+      background:linear-gradient(135deg,#001835,#0a3060);
+      border:2px solid rgba(0,229,255,.35);
+      box-shadow:0 10px 40px rgba(0,100,180,.25);
+      transform:rotateY(180deg);
+    }
+    .fc-face-label {
+      font-size:.72rem; font-weight:900; letter-spacing:.18em; text-transform:uppercase;
+    }
+    .fc-face-front .fc-face-label { color:rgba(176,132,232,.6); }
+    .fc-face-back  .fc-face-label { color:rgba(0,229,255,.6); }
+
+    .fc-face-question { font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,3.5vw,2.4rem); letter-spacing:.05em; color:var(--white); line-height:1.1; }
+    .fc-face-answer { font-size:1.05rem; font-weight:700; color:var(--white); line-height:1.6; }
+    .fc-face-hint { font-size:.8rem; color:rgba(176,132,232,.55); font-weight:700; }
+
+    /* Controls */
+    .fc-controls { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+    .fc-btn {
+      font-family:'Nunito',sans-serif; font-size:.88rem; font-weight:900;
+      text-transform:uppercase; letter-spacing:.08em;
+      padding:.6rem 1.4rem; border-radius:25px; cursor:pointer;
+      border:2px solid; transition:all .3s ease;
+    }
+    .fc-btn-prev { background:transparent; border-color:rgba(176,132,232,.4); color:var(--light-purple); }
+    .fc-btn-prev:hover { background:rgba(176,132,232,.15); border-color:var(--light-purple); }
+    .fc-btn-next { background:var(--vivid-purple); border-color:var(--vivid-purple); color:#fff; box-shadow:0 0 14px rgba(124,61,191,.4); }
+    .fc-btn-next:hover { background:#9350d4; box-shadow:0 0 22px rgba(124,61,191,.6); }
+    .fc-btn-shuffle { background:transparent; border-color:rgba(255,215,0,.35); color:var(--accent-gold); }
+    .fc-btn-shuffle:hover { background:rgba(255,215,0,.1); border-color:var(--accent-gold); }
+    .fc-btn-flip { background:linear-gradient(135deg,rgba(0,229,255,.15),rgba(91,45,142,.25)); border-color:rgba(0,229,255,.4); color:var(--accent-cyan); }
+    .fc-btn-flip:hover { background:rgba(0,229,255,.2); border-color:var(--accent-cyan); box-shadow:0 0 16px rgba(0,229,255,.3); }
 
     /* FOOTER */
     footer { position:relative; z-index:1; background:rgba(10,0,25,.97); border-top:2px solid var(--vivid-purple); padding:3rem 2rem 2rem; text-align:center; }
@@ -152,6 +280,7 @@
     @media (max-width: 560px) {
       .nav-links a { font-size:.72rem; padding:.38rem .55rem; }
       .banner { height:200px; }
+      .fc-card-wrap { height:320px; }
     }
   </style>
 </head>
@@ -172,7 +301,7 @@
   <!-- TICKER -->
   <div class="ticker-wrap">
     <span class="ticker-inner">
-      💜 WELCOME TO BTS FOREVER &nbsp;&nbsp;✨ EVERYTHING NEW ARMYS NEED TO KNOW &nbsp;&nbsp;🎵 START YOUR JOURNEY HERE &nbsp;&nbsp;🌟 MADE WITH LOVE BY HADLEY HILLSTEAD &nbsp;&nbsp;💜 WELCOME TO BTS FOREVER &nbsp;&nbsp;✨ EVERYTHING NEW ARMYS NEED TO KNOW
+      💜 WELCOME TO BTS FOREVER &nbsp;&nbsp;✨ EVERYTHING NEW ARMYS NEED TO KNOW &nbsp;&nbsp;🎵 START YOUR JOURNEY HERE &nbsp;&nbsp;🌟 MADE WITH LOVE BY HADLEY &nbsp;&nbsp;💜 WELCOME TO BTS FOREVER &nbsp;&nbsp;✨ EVERYTHING NEW ARMYS NEED TO KNOW
     </span>
   </div>
 
@@ -196,7 +325,7 @@
             <div class="img-placeholder" style="padding:0; overflow:hidden;">
               <img src="images/needtoknow-image1.jpg" alt="BTS photocard" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:16px;" />
             </div>
-            <p style="color:var(--light-purple); font-size:.82rem; font-weight:700; text-align:center; letter-spacing:.02em;">A BTS group photoshoot from the "DNA" era — one of their best music videos. 💜</p>
+            <p style="color:var(--light-purple); font-size:.82rem; font-weight:700; text-align:center; letter-spacing:.02em;">A BTS group photoshoot from the "DNA" era, definitely one of their best music videos. 💜</p>
           </div>
         </div>
         <div class="col-text">
@@ -214,7 +343,7 @@
         <div class="col-text">
           <span class="tag">⭐ KPOP Terms</span>
           <h2 class="post-title">ARMY Dictionary: Terms You Should Know!</h2>
-          <p class="post-desc">In any KPOP fandom, there are a few familiar terms that the KPOP community use! "Annyeonghaseyo"- This is the formal way to say "hello." "Sasaeng" - This means "an obsessive, crazy fan," which is what we DON'T want to be. Finally, "Saranghaeyo" - This is the formal way to say "I love you." These are just a few terms to know that make it easier to know what's going on when you're watching fan compilations and live performances!</p>
+          <p class="post-desc">In any KPOP fandom, there are a few familiar terms that the KPOP community use! "Annyeonghaseyo"- this is the formal way to say "hello." "Sasaeng" - this means "an obsessive, crazy fan," which is what we DON'T want to be. Finally, "Saranghaeyo" - this is the formal way to say "I love you." These are just a few terms to know that make it easier to know what's going on when you're watching fan compilations and live performances!</p>
         </div>
         <div class="col-img">
           <div style="display:flex; flex-direction:column; align-items:center; gap:.6rem; width:100%; max-width:420px;">
@@ -236,7 +365,7 @@
             <div class="img-placeholder" style="padding:0; overflow:hidden;">
               <img src="images/needtoknow-image3.jpg" alt="BTS photocard" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:16px;" />
             </div>
-            <p style="color:var(--light-purple); font-size:.82rem; font-weight:700; text-align:center; letter-spacing:.02em;">From left to right- RM, J-Hope, Seokjin, Jungkook, Jimin, V, Suga. 💜</p>
+            <p style="color:var(--light-purple); font-size:.82rem; font-weight:700; text-align:center; letter-spacing:.02em;">From left to right: RM, J-Hope, Seokjin, Jungkook, Jimin, V, Suga. 💜</p>
           </div>
         </div>
         <div class="col-text">
@@ -255,6 +384,22 @@
           <span class="tag">🎤 Bias & Bias Wrecker</span>
           <h2 class="post-title">Finding Your Bias and Your Bias Wrecker!</h2>
           <p class="post-desc">Lastly and arguably one of the most important parts of being an ARMY, we're going to find your bias and bias wrecker. Your bias is just your favorite member in the group, and your bias wrecker is essentially your second favorite, or who you feel could take your bias' place, thus 'bias wrecker.' For example, my bias has always been RM, but lately, my bias wrecker has been Jimin. If you're having trouble picking, there are plenty of online quizzes that'll pick for you! Just search up 'BTS bias quiz' and you'll get tons of results. I know, it's really hard to choose, and honestly it's easier to just be OT7.💜</p>
+
+          <!-- BIAS QUIZ LINKS -->
+          <div style="margin-top:.4rem;">
+            <p style="color:var(--light-purple); font-size:.88rem; font-weight:900; text-transform:uppercase; letter-spacing:.1em; margin-bottom:.75rem;">🔮 Take a Quiz to Find Your Bias!</p>
+            <div class="quiz-links">
+              <a href="https://www.quotev.com/quiz/14137329/Which-BTS-member-is-your-bias" target="_blank" rel="noopener noreferrer" class="quiz-link-btn">
+                💜 Quotev — Which BTS Member Is Your Bias? <span class="qlb-arrow">→</span>
+              </a>
+              <a href="https://www.playbuzz.com/items/bts-bias-quiz" target="_blank" rel="noopener noreferrer" class="quiz-link-btn">
+                ✨ PlayBuzz — BTS Bias Quiz <span class="qlb-arrow">→</span>
+              </a>
+              <a href="https://www.uquiz.com/quiz/cLhfE3/which-bts-member-is-your-bias" target="_blank" rel="noopener noreferrer" class="quiz-link-btn">
+                🌟 uQuiz — Who Is Your BTS Bias? <span class="qlb-arrow">→</span>
+              </a>
+            </div>
+          </div>
         </div>
         <div class="col-img">
           <div style="display:flex; flex-direction:column; align-items:center; gap:.6rem; width:100%; max-width:420px;">
@@ -276,10 +421,57 @@
     </p>
   </div>
 
+  <!-- FLASHCARD GAME -->
+  <div class="flashcard-section">
+    <div class="fc-inner">
+      <div class="fc-header">
+        <span class="fc-eyebrow">🃏 Study Game</span>
+        <h2 class="fc-title">ARMY <span>Flashcards</span></h2>
+        <p class="fc-subtitle">Test your knowledge! Click any card to flip it and reveal the answer. 💜</p>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="fc-tabs">
+        <button class="fc-tab active" onclick="setCategory('all')">💜 All Cards</button>
+        <button class="fc-tab" onclick="setCategory('terms')">⭐ K-pop Terms</button>
+        <button class="fc-tab" onclick="setCategory('birthyears')">🎂 Birth Years</button>
+      </div>
+
+      <!-- Progress -->
+      <div class="fc-progress-bar-wrap">
+        <div class="fc-progress-bar" id="fcProgressBar" style="width:0%"></div>
+      </div>
+      <p class="fc-progress-text" id="fcProgressText">Card 1 of 10</p>
+
+      <!-- Card -->
+      <div class="fc-stage">
+        <div class="fc-card-wrap" id="fcCard" onclick="flipCard()">
+          <div class="fc-face fc-face-front">
+            <span class="fc-face-label">Question — tap to flip!</span>
+            <p class="fc-face-question" id="fcQuestion">Loading...</p>
+            <span class="fc-face-hint" id="fcHint"></span>
+          </div>
+          <div class="fc-face fc-face-back">
+            <span class="fc-face-label">Answer 💜</span>
+            <p class="fc-face-answer" id="fcAnswer">Loading...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="fc-controls">
+        <button class="fc-btn fc-btn-prev" onclick="prevCard()">← Prev</button>
+        <button class="fc-btn fc-btn-flip" onclick="flipCard()">Flip Card 🔄</button>
+        <button class="fc-btn fc-btn-shuffle" onclick="shuffleCards()">Shuffle ✨</button>
+        <button class="fc-btn fc-btn-next" onclick="nextCard()">Next →</button>
+      </div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <a href="index.html" class="footer-logo">✨ BTS Forever</a>
-    <p class="footer-tagline">A fan site made with 💜 by Hadley Hillstead</p>
+    <p class="footer-tagline">A fan site made with 💜 by Hadley</p>
     <nav class="footer-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -288,8 +480,110 @@
       <a href="gallery.html">Gallery</a>
     </nav>
     <div class="footer-hearts">💜 💜 💜 💜 💜 💜 💜</div>
-    <p class="footer-copy">© 2026 Hadley Hillstead · BTS Forever Fan Site · Not affiliated with HYBE or BTS · Fan-made with ✨ &amp; love</p>
+    <p class="footer-copy">© 2026 Hadley · BTS Forever Fan Site · Not affiliated with HYBE or BTS · Fan-made with ✨ &amp; love</p>
   </footer>
+
+  <script>
+    const allCards = {
+      terms: [
+        { q: "Annyeonghaseyo", a: "The formal way to say \"Hello\" in Korean.", hint: "K-pop Term" },
+        { q: "Sasaeng", a: "An obsessive, overly dedicated fan — NOT what we want to be!", hint: "K-pop Term" },
+        { q: "Saranghaeyo", a: "The formal way to say \"I love you\" in Korean.", hint: "K-pop Term" },
+        { q: "ARMY", a: "BTS's official fandom name! It stands for Adorable Representative M.C. for Youth.", hint: "K-pop Term" },
+        { q: "Bias", a: "Your favorite member in a K-pop group.", hint: "K-pop Term" },
+        { q: "Bias Wrecker", a: "The member who makes you question your bias — your \"second favorite\" who could take the top spot!", hint: "K-pop Term" },
+        { q: "OT7", a: "Loving all 7 members equally — can't just pick one!", hint: "K-pop Term" },
+        { q: "MV", a: "Short for Music Video!", hint: "K-pop Term" },
+      ],
+      birthyears: [
+        { q: "What year was RM (Kim Namjoon) born?", a: "1994 💜 RM is BTS's leader and part of the rap line.", hint: "Birth Year" },
+        { q: "What year was Jin (Kim Seokjin) born?", a: "1992 💜 Jin is the oldest member, aka \"Worldwide Handsome!\"", hint: "Birth Year" },
+        { q: "What year was Suga (Min Yoongi) born?", a: "1993 💜 Suga is the second oldest and part of the rap line.", hint: "Birth Year" },
+        { q: "What year was J-Hope (Jung Hoseok) born?", a: "1994 💜 J-Hope is the third oldest, the best dancer, and part of the rap line.", hint: "Birth Year" },
+        { q: "What year was Jimin (Park Jimin) born?", a: "1995 💜 Jimin is the third youngest and part of the vocal line.", hint: "Birth Year" },
+        { q: "What year was V (Kim Taehyung) born?", a: "1995 💜 V is the second youngest and part of the vocal line.", hint: "Birth Year" },
+        { q: "What year was Jungkook (Jeon Jungkook) born?", a: "1997 💜 Jungkook is the youngest (the maknae!) and part of the vocal line.", hint: "Birth Year" },
+        { q: "Who is the oldest BTS member?", a: "Jin (Kim Seokjin), born in 1992!", hint: "Birth Year" },
+        { q: "Who is the youngest BTS member?", a: "Jungkook (Jeon Jungkook), born in 1997 — also called \"The Golden Maknae\"!", hint: "Birth Year" },
+        { q: "Which two members share the same birth year?", a: "Jimin and V — both born in 1995! 💜", hint: "Birth Year" },
+      ]
+    };
+
+    let currentCategory = 'all';
+    let deck = [];
+    let currentIndex = 0;
+    let isFlipped = false;
+
+    function buildDeck(category) {
+      if (category === 'all') {
+        deck = [...allCards.terms, ...allCards.birthyears];
+      } else {
+        deck = [...allCards[category]];
+      }
+    }
+
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.fc-tab').forEach((t, i) => {
+        t.classList.toggle('active', ['all','terms','birthyears'][i] === cat);
+      });
+      buildDeck(cat);
+      currentIndex = 0;
+      resetFlip();
+      renderCard();
+    }
+
+    function renderCard() {
+      const card = deck[currentIndex];
+      document.getElementById('fcQuestion').textContent = card.q;
+      document.getElementById('fcAnswer').textContent = card.a;
+      document.getElementById('fcHint').textContent = card.hint || '';
+      const pct = Math.round(((currentIndex + 1) / deck.length) * 100);
+      document.getElementById('fcProgressBar').style.width = pct + '%';
+      document.getElementById('fcProgressText').textContent = 'Card ' + (currentIndex + 1) + ' of ' + deck.length;
+    }
+
+    function resetFlip() {
+      isFlipped = false;
+      document.getElementById('fcCard').classList.remove('flipped');
+    }
+
+    function flipCard() {
+      isFlipped = !isFlipped;
+      document.getElementById('fcCard').classList.toggle('flipped', isFlipped);
+    }
+
+    function nextCard() {
+      currentIndex = (currentIndex + 1) % deck.length;
+      resetFlip();
+      renderCard();
+    }
+
+    function prevCard() {
+      currentIndex = (currentIndex - 1 + deck.length) % deck.length;
+      resetFlip();
+      renderCard();
+    }
+
+    function shuffleCards() {
+      shuffle(deck);
+      currentIndex = 0;
+      resetFlip();
+      renderCard();
+    }
+
+    // Init
+    buildDeck('all');
+    renderCard();
+  </script>
 
 </body>
 </html>
